@@ -1,6 +1,6 @@
+import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import { CSSProperties } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Service1() {
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
-      "url(https://media.istockphoto.com/id/640128314/photo/teenage-girl-looking-at-her-teeth-in-the-mirror.jpg?s=612x612&w=0&k=20&c=DK0iN0bE_daYmXSvKtNXIilSYg5TWJnszIaeVsmExwk=)",
+      "url(https://cdn.pixabay.com/photo/2015/07/10/20/54/stethoscope-840125_1280.jpg)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
@@ -22,74 +22,50 @@ export default function Service1() {
       <Navigation />
 
       {/* center text */}
-      <div className="text-4xl font-bold italic text-center w-full text-white my-40">
-        Teeth Whitening
+      <div className="text-4xl md:text-6xl font-bold italic text-center w-full text-yellow-200 drop-shadow-lg mt-20 p-4">
+        Dental Clinic- dApp
+      </div>
+      <div className="text-2xl md:text-2xl font-bold text-yellow-200 text-center w-full text-red p-4">
+        Everyone deserves to be healthy!
+      </div>
+      <div className="bg-black/50 backdrop-blur-md w-full  rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+        <p className={`m-0 w-full text-sm opacity-50 p-4`}>
+          <h2 className={`mb-3 text-2xl font-semibold text-yellow-200`}>
+            Whitening
+            <p>
+              The toothbrush doesn't remove six months of tartar 30 min before
+              your dental appointment!
+            </p>
+          </h2>
+          Your teeth and smile are some of the most applealing parts of your
+          body. Nothing is more welcoming than a bright and clean smile. For
+          over 37% of the people the first thing they notice about a person is
+          their smile, which is why to keep teeth looking healthy is very
+          important. Whitening one of the most popular cosmetic dentistry
+          procedure and safest teeth whitening is with the dentist or hygienist
+          in the clinic. Opalescence is a brand from the USA that is primarily
+          focused on achieving whiter teeth. The Opalescence Boost Whitening is
+          quick, simple and affordable to accommodate your individualized budget
+          and lifestyle. Teeth whitening appears to be a beauty trend sticking
+          around for 2024, as we all aim to attain the perfect smile. With this
+          in mind, we’ve been putting the best teeth whitening kits to the test,
+          be that gels, powders or strips. Teeth discolouration is never fun and
+          can affect people’s confidence. We’ve all been there, right? It’s a
+          problem caused by years of drinking tea, coffee, juice and wine, and
+          can even be caused by some medicines. Many people go to their dentist
+          for a spot of teeth whitening but if you’re someone who finds this a
+          slightly more extreme way of getting pearly whites, you’ll be glad to
+          hear there are some quick and easy DIY teeth whitening kits available
+          to use at home.
+        </p>
       </div>
 
-      {/* services */}
-      <div className="my-32 text-center :w-full lg:mb-0 flex justify-center gap-8 lg:text-left">
-        <Link
-          href="/payment/service-1"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Teeth Whitening{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description teeth Whitening
-          </p>
-        </Link>
-
-        <Link
-          href="/payment/service-2"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Implants{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description implants
-          </p>
-        </Link>
-
-        <Link
-          href="/payment/service-3"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Cosmetic Dentistry{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description cosmetic dentistry
-          </p>
-        </Link>
+      <div>
+        <button></button>
       </div>
 
-      {/* footer */}
-      <div className="w-full bg-black p-4 flex gap-8 mt-40">
-        <div id="logo">
-          Logo
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="contacts">
-          cnt
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="about">
-          about
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-      </div>
+      <br />
+      <Footerpage />
     </main>
   );
 }
