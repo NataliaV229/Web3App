@@ -1,6 +1,6 @@
+import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import { CSSProperties, useState } from "react";
 import Web3 from "web3";
 
@@ -98,14 +98,14 @@ export default function Contact() {
       <Navigation />
 
       {/* center text */}
-      <div className="text-6xl font-bold text-center w-full text-black my-40 ">
-        Contact
+      <div className="text-4xl md:text-6xl font-bold text-center w-full text-yellow-200 drop-shadow-lg mt-20 p-4">
+        Contact us
       </div>
 
-      <form className="text-black" id="loginformid">
-        <div className="">
+      <div className="w-full p-4 mb-20">
+        <form className="text-black w-full max-w-md mx-auto bg-white rounded-xl p-2 md:p-4">
           <input
-            className="form-control"
+            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
             type="text"
             id="nameid"
             name="name"
@@ -114,10 +114,8 @@ export default function Contact() {
             placeholder="Name"
             required
           />
-        </div>
-        <div className="">
           <input
-            className="form-control"
+            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
             type="email"
             id="emailid"
             name="email"
@@ -126,10 +124,8 @@ export default function Contact() {
             placeholder="Email"
             required
           />
-        </div>
-        <div className="">
           <textarea
-            className="form-control"
+            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
             id="messageid"
             name="messageid"
             rows={6}
@@ -137,81 +133,20 @@ export default function Contact() {
             onChange={handleInputMessageChange}
             placeholder="Message"
             required
-          ></textarea>
-        </div>
-        <div>
-          <button className="" type="submit" onClick={SubmitForm}>
-            Submit
-          </button>
-        </div>
-      </form>
-
-      {/* services */}
-      <div className="my-32 text-center :w-full lg:mb-0 flex justify-center gap-8 lg:text-left">
-        <Link
-          href="/payment/service-1"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Teeth Whitening{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description teeth Whitening
-          </p>
-        </Link>
-
-        <a
-          href="/payment/service-2"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Implants{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description implants
-          </p>
-        </a>
-
-        <Link
-          href="/payment/service-3"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Cosmetic Dentistry{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            description cosmetic dentistry
-          </p>
-        </Link>
+          />
+          <div className="w-full flex justify-end">
+            <button
+              className="w-fit bg-yellow-400 py-1 px-6 rounded-md"
+              type="submit"
+              onClick={SubmitForm}
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
 
-      {/* footer */}
-      <div className="w-full bg-black p-4 flex gap-8 mt-40">
-        <div id="logo">
-          Logo
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="contacts">
-          cnt
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="about">
-          about
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-      </div>
+      <Footerpage />
     </main>
   );
 }

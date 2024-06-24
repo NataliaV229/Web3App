@@ -1,3 +1,4 @@
+import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
 import Link from "next/link";
@@ -40,37 +41,32 @@ export default function About() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Clinic we believe in a more personal approach to dentistry, an
-            approach that is focussed on service and expertise and puts the
-            patient first. We are proud to be a centre of clinical excellence,
-            providing the best dental care to suit you, not only as a patient,
-            but also a person. We provide care for all age groups and are
-            committed to providing quality dentistry in a safe environment.
-            Whatever your needs – we can find a solution. A visit to Fresh
-            Dental & Implant Clinic will be a pleasant surprise, we look forward
-            to welcoming you.
+            Your teeth and smile are some of the most applealing parts of your
+            body. Nothing is more welcoming than a bright and clean smile. For
+            over 37% of the people the first thing they notice about a person is
+            their smile, which is why to keep teeth looking healthy is very
+            important. Whitening one of the most popular cosmetic dentistry
+            procedure and safest teeth whitening is with the dentist or
+            hygienist in the clinic. Opalescence is a brand from the USA that is
+            primarily focused on achieving whiter teeth. The Opalescence Boost
+            Whitening is quick, simple and affordable to accommodate your
+            individualized budget and lifestyle. Teeth whitening appears to be a
+            beauty trend sticking around for 2024, as we all aim to attain the
+            perfect smile. With this in mind, we’ve been putting the best teeth
+            whitening kits to the test, be that gels, powders or strips. Teeth
+            discolouration is never fun and can affect people’s confidence.
+            We’ve all been there, right? It’s a problem caused by years of
+            drinking tea, coffee, juice and wine, and can even be caused by some
+            medicines. Many people go to their dentist for a spot of teeth
+            whitening but if you’re someone who finds this a slightly more
+            extreme way of getting pearly whites, you’ll be glad to hear there
+            are some quick and easy DIY teeth whitening kits available to use at
+            home.
           </p>
         </Link>
       </div>
 
-      {/* footer */}
-      <div
-        className="w-full bg-blue
-       p-4 flex gap-8 mt-40"
-      >
-        <div id="logo">
-          Logo
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="contacts">
-          cnt
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-        <div id="about">
-          about
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-        </div>
-      </div>
+      <Footerpage />
     </main>
   );
 }
