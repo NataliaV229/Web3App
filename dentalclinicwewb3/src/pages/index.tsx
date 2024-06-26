@@ -19,7 +19,11 @@ export default function Home() {
 
   return (
     <>
-      <main className={` h-fit w-full relative`} style={backgroundImageStyle}>
+      <main className={`h-auto w-screen relative`}>
+        <div
+          className="w-screen h-screen absolute inset-0"
+          style={backgroundImageStyle}
+        ></div>
         {/* nav  */}
         <Navigation />
         {/* center text */}

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footerpage() {
   return (
-    <footer className="w-full bg-black p-4 flex flex-col md:flex-row md:justify-around items-center gap-8 relative absolute bottom-0">
+    <div className="w-full bg-black p-4 flex flex-col md:flex-row md:justify-around items-center gap-8 relative">
       <div id="logo" className="w-full md:w-fit">
         <div className="w-fit mx-auto">
           <Link
@@ -32,6 +32,6 @@ export default function Footerpage() {
         <br />
         <a href="tel:+35316723433216">tel: 016723433216</a>
       </div>
-    </footer>
+    </div>
   );
 }

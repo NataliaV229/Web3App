@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <nav className="px-4 z-10 w-full items-center justify-between font-mono text-sm lg:flex">
+    <nav className="px-4 z-10 w-screen items-center justify-between font-mono text-sm lg:flex">
       <div className="">
         <Link
           className="pointer-events-none flex w-fit mx-auto place-items-center gap-2 lg:pointer-events-auto"
