@@ -20,7 +20,6 @@ export default function Contact() {
   // address metamask
   const ABI = [
     {
-      constant: false,
       inputs: [
         {
           internalType: "string",
@@ -40,13 +39,11 @@ export default function Contact() {
       ],
       name: "setInfo",
       outputs: [],
-      payable: false,
       stateMutability: "nonpayable",
       type: "function",
     },
   ];
-
-  const Address = "0x71076cde1de7d88a7dfb1dab237e222437d2d5a0"; // Taking ss contract Address from Remix
+  const Address = "0x7390366b8574b2EB39181a8D70E28dD200b70791"; // Taking ss contract Address from Remix
 
   const EncryptFuntion = async () => {
     if (window.web3 !== "undefined") {
@@ -86,10 +83,34 @@ export default function Contact() {
     var account = localStorage.getItem("account_full");
     console.log(account);
 
-    await window.contract.methods
+    console.log(window);
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const userAccount = accounts[0];
+        console.log(userAccount);
+
+        //set the contract
+        window.contract = await new window.web3.eth.Contract(ABI, Address);
+        const contractConst = window.contract;
+
+        await contractConst.methods.setInfo(name, email, message).send({
+          from: userAccount,
+          gas: 3000000,
+        });
+      } catch (error) {
+        console.error("Error in submitting:", error);
+        alert("Error in submitting.");
+      }
+    } else {
+      console.error("Ethereum object doesn't exist!");
+    }
+
+    /*await window.contract.methods
       .setInfo(name, email, message)
-      .send({ from: account, gas: 3000000 });
-    alert("Your form has been submitted");
+      .send({ from: account, gas: 3000000 });*/
   };
 
   return (
@@ -102,48 +123,52 @@ export default function Contact() {
         Contact us
       </div>
 
-      <div className="w-full p-4 mb-20">
-        <form className="text-black w-full max-w-md mx-auto bg-white rounded-xl p-2 md:p-4">
-          <input
-            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
-            type="text"
-            id="nameid"
-            name="name"
-            value={name}
-            onChange={handleInputNameChange}
-            placeholder="Name"
-            required
-          />
-          <input
-            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
-            type="email"
-            id="emailid"
-            name="email"
-            value={email}
-            onChange={handleInputEmailChange}
-            placeholder="Email"
-            required
-          />
-          <textarea
-            className="w-full mb-2 p-2 bg-slate-100 rounded-md outline-none"
-            id="messageid"
-            name="messageid"
-            rows={6}
-            value={message}
-            onChange={handleInputMessageChange}
-            placeholder="Message"
-            required
-          />
-          <div className="w-full flex justify-end">
-            <button
-              className="w-fit bg-yellow-400 py-1 px-6 rounded-md"
-              type="submit"
-              onClick={SubmitForm}
-            >
-              Submit
-            </button>
+      <div className="bg-white w-full h-fit py-20 px-4 text-black">
+        <div className="w-full max-w-3xl mx-auto">
+          <div className="w-full p-4 mb-20">
+            <form className="text-black w-full max-w-md mx-auto bg-white rounded-xl p-2 md:p-4">
+              <input
+                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                type="text"
+                id="nameid"
+                name="name"
+                value={name}
+                onChange={handleInputNameChange}
+                placeholder="Name"
+                required
+              />
+              <input
+                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                type="email"
+                id="emailid"
+                name="email"
+                value={email}
+                onChange={handleInputEmailChange}
+                placeholder="Email"
+                required
+              />
+              <textarea
+                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                id="messageid"
+                name="messageid"
+                rows={6}
+                value={message}
+                onChange={handleInputMessageChange}
+                placeholder="Message"
+                required
+              />
+              <div className="w-full flex justify-end">
+                <button
+                  className="w-fit bg-yellow-400 py-1 px-6 rounded-md"
+                  type="submit"
+                  onClick={SubmitForm}
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
 
       <Footerpage />
