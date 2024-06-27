@@ -37,6 +37,19 @@ const ConnectContractBtn = () => {
       {
         inputs: [
           {
+            internalType: "uint256",
+            name: "_amount",
+            type: "uint256",
+          },
+        ],
+        name: "test",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+      },
+      {
+        inputs: [
+          {
             internalType: "address payable",
             name: "_to",
             type: "address",
@@ -49,15 +62,20 @@ const ConnectContractBtn = () => {
         ],
         name: "withdraw",
         outputs: [],
-        stateMutability: "nonpayable",
+        stateMutability: "payable",
         type: "function",
       },
       {
         inputs: [],
-        name: "getAddress",
+        stateMutability: "nonpayable",
+        type: "constructor",
+      },
+      {
+        inputs: [],
+        name: "recipient",
         outputs: [
           {
-            internalType: "address",
+            internalType: "address payable",
             name: "",
             type: "address",
           },
@@ -65,36 +83,40 @@ const ConnectContractBtn = () => {
         stateMutability: "view",
         type: "function",
       },
-      {
-        inputs: [],
-        name: "getBalance",
-        outputs: [
-          {
-            internalType: "uint256",
-            name: "",
-            type: "uint256",
-          },
-        ],
-        stateMutability: "view",
-        type: "function",
-      },
     ];
 
-    const Address = "0x1f85d9a0a9bb95a3958a0de812753ffc8d8dbcf4"; // Taking Address from Remix
+    const Address = "0x7bF8B3F9D132e8CcF7bE3C4c74d1D1da4F44c1B9"; // Taking Address from Remix
     window.web3 = new Web3(window.ethereum);
     window.contract = await new window.web3.eth.Contract(ABI, Address);
     const contractConst = window.contract;
     console.log("Contract connected");
-    getContractAccount(userAccount, contractConst);
+    //getContractAccount(userAccount, contractConst);
     console.log("userAccount from CC", userAccount);
+    //
+    if (contractConst) {
+      try {
+        await contractConst.methods.deposit().send({
+          from: userAccount,
+          value: Web3.utils.toWei("0.1".toString(), "ether"),
+        });
+        alert("ETH sent successful thanks for donating!");
+      } catch (error) {
+        console.error("Error in withdrawing:", error);
+        alert("Error in withdrawing.");
+      }
+    } else if (account === null) {
+      alert(`Please enter the amount to donate`);
+    } else {
+      alert(`Please connect your wallet`);
+    }
   };
 
   const getContractAccount = async (
     userAccount: string | null,
     contractConst: any
   ) => {
-    const data = await window.contract.methods.getAddress().call();
-    setContractAccount(data);
+    //const data = await window.contract.methods.getAddress().call();
+    //setContractAccount(data);
     // depositContract(userAccount, contractConst);
     console.log("userAccount from CA", userAccount);
   };

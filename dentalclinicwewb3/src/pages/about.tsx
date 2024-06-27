@@ -1,69 +1,58 @@
 import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import { CSSProperties } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function About() {
+export default function Service1() {
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
       "url(https://cdn.pixabay.com/photo/2015/07/10/20/54/stethoscope-840125_1280.jpg)",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    width: "100%",
-    height: "100vh",
+    width: "100vw",
+    height: "100%",
     color: "white",
   };
 
   return (
-    <main className={`min-h-screen w-full`} style={backgroundImageStyle}>
-      {/* nav  */}
-      <Navigation />
+    <main className={`h-auto w-screen relative`}>
+      <div className="w-screen h-fit pb-20" style={backgroundImageStyle}>
+        {/* nav  */}
+        <Navigation />
 
-      {/* center text */}
-      <div className="text-6xl font-bold text-center w-full text-black my-40">
-        Dental Clinic Dapp
+        {/* center text */}
+        <div className="text-4xl md:text-6xl font-bold italic text-center text-yellow-300 bg-white shadow-lg w-fit mx-auto drop-shadow-lg mt-20 p-4 mb-4">
+          About Us
+        </div>
+        <div className="text-2xl md:text-2xl font-bold text-black bg-white shadow-lg text-center w-fit mx-auto text-red px-4 py-1">
+          Small investments in prevention lead to big smiles down the road.
+        </div>
       </div>
-
-      {/* services */}
-      <div className="my-32 text-center :w-full lg:mb-0 flex justify-center gap-8 lg:text-left">
-        <Link
-          href="/payment/service-3"
-          className="bg-black/50 backdrop-blur-md w-full max-w-xs group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            About Dental Clinic DApp{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+      <div className="bg-white w-full h-fit py-20 px-4 text-black">
+        <div className="w-full max-w-3xl mx-auto">
+          <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
+            DentalClinic
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Your teeth and smile are some of the most applealing parts of your
-            body. Nothing is more welcoming than a bright and clean smile. For
-            over 37% of the people the first thing they notice about a person is
-            their smile, which is why to keep teeth looking healthy is very
-            important. Whitening one of the most popular cosmetic dentistry
-            procedure and safest teeth whitening is with the dentist or
-            hygienist in the clinic. Opalescence is a brand from the USA that is
-            primarily focused on achieving whiter teeth. The Opalescence Boost
-            Whitening is quick, simple and affordable to accommodate your
-            individualized budget and lifestyle. Teeth whitening appears to be a
-            beauty trend sticking around for 2024, as we all aim to attain the
-            perfect smile. With this in mind, we’ve been putting the best teeth
-            whitening kits to the test, be that gels, powders or strips. Teeth
-            discolouration is never fun and can affect people’s confidence.
-            We’ve all been there, right? It’s a problem caused by years of
-            drinking tea, coffee, juice and wine, and can even be caused by some
-            medicines. Many people go to their dentist for a spot of teeth
-            whitening but if you’re someone who finds this a slightly more
-            extreme way of getting pearly whites, you’ll be glad to hear there
-            are some quick and easy DIY teeth whitening kits available to use at
-            home.
+
+          <p className={`w-full text-sm`}>
+            We've listened and taken a patient-centred approach in every aspect
+            of your visit to calm the senses and make your experience more
+            pleasant. We dedicate ourselves to providing comprehensive dental
+            services in our state-of-the-art dental suites using the most
+            advanced technology. Everything is designed with your comfort and
+            care in mind. Our dentists are extensively educated and
+            knowledgeable. All our specialists are registered by the Dental
+            Council of Ireland. Our staff is devoted to continuous learning to
+            stay updated with new practices and techniques. With over 50,000
+            patients cared for to-date, our patients trust us to care for them
+            and their families. We've earned that trust through our steadfast
+            commitment to our core values of integrity and care. Integrity is
+            the cornerstone of our values, and we always act with honesty and
+            transparency with the intent to do what's right.
           </p>
-        </Link>
+        </div>
       </div>
 
       <Footerpage />

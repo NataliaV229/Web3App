@@ -65,7 +65,7 @@ export default function Service1() {
           </p>
           <div className="mt-4 w-full flex gap-4 justify-between items-center">
             <p className="font-semibold text-lg">
-              Price: <span className="text-blue-600">400 ETH</span>
+              Price: <span className="text-blue-600">1 ETH</span>
             </p>
             <button
               type="button"
