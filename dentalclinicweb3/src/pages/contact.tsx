@@ -128,7 +128,7 @@ export default function Contact() {
           <div className="w-full p-4 mb-20">
             <form className="text-black w-full max-w-md mx-auto bg-white rounded-xl p-2 md:p-4">
               <input
-                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                className="w-full mb-2 p-2 bg-slate-200 rounded-md outline-none"
                 type="text"
                 id="nameid"
                 name="name"
@@ -138,7 +138,7 @@ export default function Contact() {
                 required
               />
               <input
-                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                className="w-full mb-2 p-2 bg-slate-200 rounded-md outline-none"
                 type="email"
                 id="emailid"
                 name="email"
@@ -148,7 +148,7 @@ export default function Contact() {
                 required
               />
               <textarea
-                className="w-full mb-2 p-2 bg-slate-300 rounded-md outline-none"
+                className="w-full mb-2 p-2 bg-slate-200 rounded-md outline-none"
                 id="messageid"
                 name="messageid"
                 rows={6}
