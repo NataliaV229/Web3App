@@ -1,10 +1,31 @@
 // components/ConnectMetamask.tsx
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Web3 from "web3";
 
-const ConnectContractBtn = () => {
-  const [contractAccount, setContractAccount] = useState<string | null>(null);
+interface ServiceProps {
+  setConfirmed: Dispatch<SetStateAction<any>>;
+  setShowLoyalty: Dispatch<SetStateAction<any>>;
+  setShowForm: Dispatch<SetStateAction<any>>;
+  showLoyalty: any;
+  confirmed: any;
+  name: any;
+  email: any;
+  date: any;
+}
+
+const ConnectContractBtn: React.FC<ServiceProps> = ({
+  setConfirmed,
+  confirmed,
+  name,
+  email,
+  date,
+  showLoyalty,
+  setShowLoyalty,
+  setShowForm,
+}) => {
   const [account, setAccount] = useState<string | null>(null);
+
+  console.log({ name: name, email: email, date: date });
 
   const connectMetamask = async () => {
     console.log(window);
@@ -90,6 +111,7 @@ const ConnectContractBtn = () => {
     window.contract = await new window.web3.eth.Contract(ABI, Address);
     const contractConst = window.contract;
     console.log("Contract connected");
+    setConfirmed(true);
     //getContractAccount(userAccount, contractConst);
     console.log("userAccount from CC", userAccount);
     //
@@ -99,13 +121,14 @@ const ConnectContractBtn = () => {
           from: userAccount,
           value: Web3.utils.toWei("0.1".toString(), "ether"),
         });
-        alert("ETH sent successful thanks for donating!");
+        setShowLoyalty(true);
+        // alert("Thank you!");
       } catch (error) {
         console.error("Error in withdrawing:", error);
         alert("Error in withdrawing.");
       }
     } else if (account === null) {
-      alert(`Please enter the amount to donate`);
+      alert(`Error`);
     } else {
       alert(`Please connect your wallet`);
     }
@@ -165,21 +188,40 @@ const ConnectContractBtn = () => {
   };
 
   return (
-    <div className="w-fit overflow-x-auto mx-auto md:mx-0">
-      <button
-        onClick={connectMetamask}
-        className="justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 py-2 px-6 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:dark:bg-zinc-800/30 hover:opacity-80 "
-      >
-        Pay
-      </button>
-      <button
-        onClick={depositContract}
-        className="justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 py-2 px-6 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:dark:bg-zinc-800/30 hover:opacity-80 "
-      >
-        ok
-      </button>
-      {account && `User Account: ${account}`}
-      <p>Contract: {contractAccount}</p>
+    <div className="w-full">
+      <div className="w-full flex justify-end">
+        {confirmed ? (
+          <button
+            onClick={depositContract}
+            type="button"
+            className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+          >
+            Proceed to Pay
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() => setShowForm(false)}
+              type="button"
+              className="px-4 py-2 rounded-full hover:opacity-80"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={connectMetamask}
+              type="button"
+              className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+            >
+              Confirm
+            </button>
+          </>
+        )}
+      </div>
+      {account && (
+        <div className="w-full pt-4 mt-4 border-t">
+          <p>Connected with account: {account}</p>
+        </div>
+      )}
     </div>
   );
 };

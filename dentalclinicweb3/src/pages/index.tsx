@@ -38,7 +38,7 @@ export default function Home() {
         <div className="my-32 text-center w-full flex flex-col md:flex-row item-center justify-center gap-8 lg:text-left">
           <Link
             href="/payment/service-1"
-            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col justify-between"
           >
             <h2 className={`mb-3 text-2xl font-semibold text-yellow-200`}>
               Teeth Whitening
@@ -51,11 +51,14 @@ export default function Home() {
               is quick, simple and affordable to accommodate your individualized
               budget and lifestyle.
             </p>
+            <div className="flex justify-end mt-4">
+              <p className="text-yellow-300">Check more</p>
+            </div>
           </Link>
 
           <Link
             href="/payment/service-2"
-            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col justify-between"
           >
             <h2 className={`mb-3 text-2xl font-semibold text-yellow-200`}>
               Implants
@@ -68,11 +71,14 @@ export default function Home() {
               which can be especially important for people who have difficulty
               speaking or eating with traditional dentures.
             </p>
+            <div className="flex justify-end mt-4">
+              <p className="text-yellow-300">Check more</p>
+            </div>
           </Link>
 
           <Link
             href="/payment/service-3"
-            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            className="bg-black/50 backdrop-blur-md w-full max-w-xs mx-auto md:mx-0 group rounded-lg border px-5 py-4 transition-colors border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 flex flex-col justify-between"
           >
             <h2 className={`mb-3 text-2xl font-semibold text-yellow-200`}>
               Cosmetic Dentistry
@@ -84,6 +90,9 @@ export default function Home() {
               restorations, white composite filling – look natural, clean and
               will keep your smile looking beautiful.
             </p>
+            <div className="flex justify-end mt-4">
+              <p className="text-yellow-300">Check more</p>
+            </div>
           </Link>
         </div>
         <Footerpage />

@@ -1,6 +1,6 @@
 pragma solidity ^0.5.17;
 
-contract FavouriteStorage {
+contract ContactStorage {
     string Name;
     string Email;
     string Message;
