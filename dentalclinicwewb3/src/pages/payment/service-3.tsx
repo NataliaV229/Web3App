@@ -1,11 +1,20 @@
+import BookingForm from "@/components/bookingForm";
+import ConnectContractBtn from "@/components/connectContract";
 import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Service1() {
+export default function Service3() {
+  const [showForm, setShowForm] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [showLoyalty, setShowLoyalty] = useState(false);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
       "url(https://cdn.pixabay.com/photo/2015/07/10/20/54/stethoscope-840125_1280.jpg)",
@@ -59,6 +68,80 @@ export default function Service1() {
             your best option is to arrange a consultation with a general and
             cosmetic dentist to find out more.
           </p>
+          <div className="mt-4 w-full flex gap-4 justify-between items-center">
+            <p className="font-semibold text-lg">
+              Price: <span className="text-blue-600">1 ETH</span>
+            </p>
+            {!showForm && (
+              <button
+                type="button"
+                onClick={() => setShowForm(true)}
+                className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+              >
+                Book Now
+              </button>
+            )}
+          </div>
+          {showForm && (
+            <div className="w-full max-w-md mx-auto border rounded-lg shadow-md p-4 mt-4">
+              {confirmed ? (
+                <div className="w-full mb-4">
+                  <h2>Booking details:</h2>
+                  <p>Service: Whitening</p>
+                  <p>Customer: {name}</p>
+                  <p>Customer email: {email}</p>
+                  <p>Booking date: {date}</p>
+                </div>
+              ) : (
+                <BookingForm
+                  setName={setName}
+                  setEmail={setEmail}
+                  setDate={setDate}
+                  name={name}
+                  email={email}
+                  date={date}
+                />
+              )}
+              <ConnectContractBtn
+                confirmed={confirmed}
+                setConfirmed={setConfirmed}
+                name={name}
+                email={email}
+                date={date}
+                showLoyalty={showLoyalty}
+                setShowLoyalty={setShowLoyalty}
+                setShowForm={setShowForm}
+              />
+            </div>
+          )}
+          {showLoyalty && (
+            <div className="w-full border rounded-lg shadow-md p-4 mt-4 text-center max-w-md mx-auto bg-yellow-50">
+              <h2 className="font-bold text-2xl">
+                Thank You for the booking with us!
+              </h2>
+              <p className="text-lg">
+                Get 0.0002 ETH with our Loyalty Program!
+              </p>
+              <div className="w-full flex justify-center gap-4 mt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowLoyalty(false), setShowForm(false);
+                  }}
+                  className="bg-yellow-300/10 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+                >
+                  No thank you!
+                </button>
+                <button
+                  type="button"
+                  onClick={() => console.log("Claimed")}
+                  className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+                >
+                  Claim Now
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
