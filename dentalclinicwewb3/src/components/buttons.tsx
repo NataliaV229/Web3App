@@ -21,21 +21,21 @@ const TwoButtons: React.FC = () => {
       const signer = provider.getSigner();
 
       // Replace with your contract address and ABI
-      const contractAddress = "YOUR_NFT_CONTRACT_ADDRESS";
-      const contractABI = [
-        //Replace this array with your contract ABI
-      ];
+      //const contractAddress = "YOUR_NFT_CONTRACT_ADDRESS";
+      //const contractABI = [
+      // Replace this array with your contract ABI
+      //];
 
       // Create a new contract instance
-      const nftContract = new ethers.Contract(
-        contractAddress,
-        contractABI,
-        signer
-      );
+      // const nftContract = new ethers.Contract(
+      // contractAddress,
+      //contractABI,
+      //signer
+      //);
 
       // Call the mint function (replace 'mint' with your contract's minting function)
-      const tx = await nftContract.mint();
-      await tx.wait();
+      //const tx = await nftContract.mint();
+      //await tx.wait();
 
       alert("NFT minted successfully!");
     } catch (error) {
