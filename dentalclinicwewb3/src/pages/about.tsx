@@ -56,16 +56,19 @@ export default function AboutUs() {
       <div className="bg-white w-full h-fit py-20 px-4 text-black">
         <div className="w-full max-w-3xl mx-auto">
           <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
-            DentalClinic
+            Why WEB3
           </h2>
-
           <p className={`w-full text-sm`}>
-            We've listened and taken a patient-centred approach in every aspect
-            of your visit to calm the senses and make your experience more
-            pleasant. We dedicate ourselves to providing comprehensive dental
-            services in our state-of-the-art dental suites using the most
-            advanced technology. Everything is designed with your comfort and
-            care in mind. Our dentists are extensively educated and
+            Dental Clinic Dapp is built on the Ethereum blockchain. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Maiores minus et velit
+            assumenda, unde quidem recusandae dolore tempora mollitia vel
+            impedit, fugit quo? Neque nam saepe ipsam, quibusdam expedita rerum.
+            <br></br> We've listened and taken a patient-centred approach in
+            every aspect of your visit to calm the senses and make your
+            experience more pleasant. We dedicate ourselves to providing
+            comprehensive dental services in our state-of-the-art dental suites
+            using the most advanced technology. Everything is designed with your
+            comfort and care in mind. Our dentists are extensively educated and
             knowledgeable. All our specialists are registered by the Dental
             Council of Ireland. Our staff is devoted to continuous learning to
             stay updated with new practices and techniques. With over 50,000
@@ -74,6 +77,14 @@ export default function AboutUs() {
             commitment to our core values of integrity and care. Integrity is
             the cornerstone of our values, and we always act with honesty and
             transparency with the intent to do what's right.
+          </p>
+          <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
+            What are the benefits?
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla saepe
+            eos autem nobis ducimus aut, excepturi quidem et ullam nostrum quos
+            neque? Dolore facilis unde dicta animi recusandae quaerat ex.
           </p>
         </div>
       </div>

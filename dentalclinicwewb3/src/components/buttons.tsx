@@ -1,8 +1,10 @@
-import { ethers } from "ethers";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const TwoButtons: React.FC = () => {
   const etherscanUrl = "https://etherscan.io/address/YOUR_NFT_CONTRACT_ADDRESS";
+  useEffect(() => {
+    console.log("bearer:" + process.env.NEXT_PUBLIC_PINATA_JWT);
+  }, []);
 
   const mintNFT = async () => {
     if (!window.ethereum) {
@@ -44,6 +46,63 @@ const TwoButtons: React.FC = () => {
     }
   };
 
+  const [file, setFile]: any = useState();
+  const [pinataFile, setPinataFile]: any = useState();
+
+  function handleChange(e: any) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setPinataFile(e.target.files[0]);
+  }
+
+  function mint(formData: FormData) {
+    {
+      /**deployed: 0xf6988E2A100ea3ab6Ab7beD0a87E8F2c7f07025b
+      -link abi and contract communication.
+      -cid hash from uploading to pinata, construct uri for minting
+      -call mint function in the contract
+      
+      */
+    }
+  }
+
+  const handleSubmission = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", pinataFile);
+      const metadata = JSON.stringify({
+        name: "DentalClinicXray",
+      });
+      formData.append("pinataMetadata", metadata);
+
+      const options = JSON.stringify({
+        cidVersion: 0,
+      });
+      formData.append("pinataOptions", options);
+
+      const res = await fetch(
+        "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_PINATA_JWT}`,
+          },
+          body: formData,
+        }
+      );
+      const resData = await res.json();
+      {
+        /*get hash from resData*/
+      }
+      console.log(resData);
+      {
+        /*Start mint function call here*/
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex justify-center space-x-4">
       <a
@@ -54,8 +113,11 @@ const TwoButtons: React.FC = () => {
       >
         View on Etherscan
       </a>
+      <img src={file} />
+      <input type="file" onChange={handleChange} />
       <button
-        onClick={mintNFT}
+        type="submit"
+        onClick={handleSubmission}
         className="w-fit bg-yellow-300 text-black py-1 px-6 rounded-md"
       >
         Mint NFT
