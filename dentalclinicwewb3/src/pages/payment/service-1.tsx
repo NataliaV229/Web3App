@@ -17,6 +17,8 @@ export default function Service1() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [file, setFile]: any = useState();
+  const [pinataFile, setPinataFile]: any = useState();
 
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
@@ -107,6 +109,9 @@ export default function Service1() {
                   email={email}
                   date={date}
                   nftUrl={nftUrl}
+                  file={file}
+                  setFile={setFile}
+                  setPinataFile={setPinataFile}
                 />
               )}
               <ConnectContractBtn
@@ -119,6 +124,8 @@ export default function Service1() {
                 setShowLoyalty={setShowLoyalty}
                 setShowForm={setShowForm}
                 nftUrl={nftUrl}
+                pinataFile={pinataFile}
+                setNftUrl={setNftUrl}
               />
             </div>
           )}
