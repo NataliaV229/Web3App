@@ -1,6 +1,7 @@
 // components/ConnectMetamask.tsx
 import { Dispatch, SetStateAction, useState } from "react";
 import Web3 from "web3";
+import { handlePinataSubmission } from "../functions/xraynft";
 
 interface ServiceProps {
   setConfirmed: Dispatch<SetStateAction<any>>;
@@ -11,6 +12,9 @@ interface ServiceProps {
   name: any;
   email: any;
   date: any;
+  nftUrl: any;
+  pinataFile: any;
+  setNftUrl: any;
 }
 
 const ConnectContractBtn: React.FC<ServiceProps> = ({
@@ -19,15 +23,21 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
   name,
   email,
   date,
+  nftUrl,
   showLoyalty,
   setShowLoyalty,
   setShowForm,
+  pinataFile,
+  setNftUrl,
 }) => {
   const [account, setAccount] = useState<string | null>(null);
+  const [paid, setPaid] = useState<boolean>(false);
+  const [paymentLoading, setPaymentLoading] = useState<boolean>(false);
 
-  console.log({ name: name, email: email, date: date });
+  console.log({ name: name, email: email, date: date, nftUrl: nftUrl });
 
-  const connectMetamask = async () => {
+  const connectMetamask = async (setNftUrl: Dispatch<SetStateAction<any>>) => {
+    handlePinataSubmission(pinataFile, setNftUrl); //start function Mint NFT
     console.log(window);
     if (typeof window.ethereum !== "undefined") {
       try {
@@ -36,8 +46,8 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
         });
         const userAccount = accounts[0];
         setAccount(userAccount);
-        connectContract(userAccount);
-        console.log(userAccount);
+        console.log("userAccount", userAccount);
+        setConfirmed(true);
       } catch (error) {
         console.error("Error connecting to Metamask:", error);
       }
@@ -111,16 +121,20 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
     window.contract = await new window.web3.eth.Contract(ABI, Address);
     const contractConst = window.contract;
     console.log("Contract connected");
-    setConfirmed(true);
     //getContractAccount(userAccount, contractConst);
     console.log("userAccount from CC", userAccount);
     //
     if (contractConst) {
       try {
-        await contractConst.methods.deposit().send({
-          from: userAccount,
-          value: Web3.utils.toWei("0.1".toString(), "ether"),
-        });
+        await contractConst.methods
+          .deposit()
+          // .setInfo(name, email, date, nftUrl)
+          .send({
+            from: userAccount,
+            value: Web3.utils.toWei("0.1".toString(), "ether"),
+          });
+        setPaid(true);
+        setPaymentLoading(true);
         setShowLoyalty(true);
         // alert("Thank you!");
       } catch (error) {
@@ -134,70 +148,22 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
     }
   };
 
-  const getContractAccount = async (
-    userAccount: string | null,
-    contractConst: any
-  ) => {
-    //const data = await window.contract.methods.getAddress().call();
-    //setContractAccount(data);
-    // depositContract(userAccount, contractConst);
-    console.log("userAccount from CA", userAccount);
-  };
-
-  const depositContract = async () => {
-    const amount = 0.004;
-
-    if (typeof window === "undefined") {
-      console.log(
-        "Window object is not available, function can only run in the browser."
-      );
-      return;
-    }
-
-    if (!account) {
-      console.log("Account not connected");
-      return;
-    }
-
-    try {
-      if (window.contract && window.contract.methods) {
-        await window.contract.methods
-          .deposit()
-          .send({ from: account, value: amount });
-      } else {
-        console.log("Contract methods are not available on the window object.");
-      }
-    } catch (error: any) {
-      if (typeof error === "string") {
-        console.error("Error while depositing:", error);
-      } else if (error.message) {
-        console.error("Error message:", error.message);
-        if (error.message.startsWith("e.startsWith")) {
-          console.error(
-            "The error seems to be related to an invalid call to 'startsWith'."
-          );
-        }
-      } else if (error instanceof Error) {
-        console.error("An error occurred:", error);
-      } else {
-        console.error("An unknown error occurred:", error);
-      }
-    }
-
-    console.log("userAccount from DC", account);
-  };
-
   return (
     <div className="w-full">
       <div className="w-full flex justify-end">
         {confirmed ? (
-          <button
-            onClick={depositContract}
-            type="button"
-            className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
-          >
-            Proceed to Pay
-          </button>
+          !paid && (
+            <button
+              onClick={() => {
+                connectContract(account), setPaymentLoading(true);
+              }}
+              type="button"
+              disabled={paymentLoading}
+              className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+            >
+              {paymentLoading ? "Loading..." : "Proceed to Pay"}
+            </button>
+          )
         ) : (
           <>
             <button
@@ -208,7 +174,7 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
               Cancel
             </button>
             <button
-              onClick={connectMetamask}
+              onClick={() => connectMetamask(setNftUrl)}
               type="button"
               className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
             >

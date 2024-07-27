@@ -11,10 +11,14 @@ export default function Service2() {
   const [showForm, setShowForm] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [showLoyalty, setShowLoyalty] = useState(false);
+  const [nftUrl, setNftUrl] = useState(null);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [file, setFile]: any = useState();
+  const [pinataFile, setPinataFile]: any = useState();
+
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
       "url(https://cdn.pixabay.com/photo/2015/07/10/20/54/stethoscope-840125_1280.jpg)",
@@ -87,6 +91,7 @@ export default function Service2() {
                   <p>Customer: {name}</p>
                   <p>Customer email: {email}</p>
                   <p>Booking date: {date}</p>
+                  <p>NFT hash: {nftUrl}</p>
                 </div>
               ) : (
                 <BookingForm
@@ -96,6 +101,10 @@ export default function Service2() {
                   name={name}
                   email={email}
                   date={date}
+                  nftUrl={nftUrl}
+                  file={file}
+                  setFile={setFile}
+                  setPinataFile={setPinataFile}
                 />
               )}
               <ConnectContractBtn
@@ -104,9 +113,12 @@ export default function Service2() {
                 name={name}
                 email={email}
                 date={date}
+                nftUrl={nftUrl}
                 showLoyalty={showLoyalty}
                 setShowLoyalty={setShowLoyalty}
                 setShowForm={setShowForm}
+                pinataFile={pinataFile}
+                setNftUrl={setNftUrl}
               />
             </div>
           )}

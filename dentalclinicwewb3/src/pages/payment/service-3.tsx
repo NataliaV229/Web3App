@@ -11,6 +11,8 @@ export default function Service3() {
   const [showForm, setShowForm] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [showLoyalty, setShowLoyalty] = useState(false);
+  const etherscanUrl = "https://etherscan.io/address/YOUR_NFT_CONTRACT_ADDRESS";
+  const [nftUrl, setNftUrl] = useState(etherscanUrl);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -100,6 +102,7 @@ export default function Service3() {
                   name={name}
                   email={email}
                   date={date}
+                  nftUrl={nftUrl}
                 />
               )}
               <ConnectContractBtn
@@ -111,6 +114,7 @@ export default function Service3() {
                 showLoyalty={showLoyalty}
                 setShowLoyalty={setShowLoyalty}
                 setShowForm={setShowForm}
+                nftUrl={nftUrl}
               />
             </div>
           )}
