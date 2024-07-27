@@ -4,10 +4,10 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract {Collection-Name} is ERC721, Ownable {
+contract xray is ERC721, Ownable {
     uint256 private _tokenIdCounter;
-    uint256 public MAX_SUPPLY = {Max-Number}; // set max total supply
-    uint256 public maxMintsPerUser = {Max-Mint}; // max mints per user
+    uint256 public MAX_SUPPLY = 10; // set max total supply
+    uint256 public maxMintsPerUser = 2; // max mints per user
 
     string public baseTokenURI;
     mapping(address => uint256) private _mintsPerUser;

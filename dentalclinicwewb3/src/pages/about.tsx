@@ -1,4 +1,3 @@
-import TwoButtons from "@/components/buttons";
 import Footerpage from "@/components/footer";
 import Gallery from "@/components/gallery"; // Import the Gallery component
 import Navigation from "@/components/navigation";
@@ -49,7 +48,8 @@ export default function AboutUs() {
           About Us
         </div>
         <div className="text-2xl md:text-2xl font-bold text-black bg-white shadow-lg text-center w-fit mx-auto text-red px-4 py-1">
-          Small investments in prevention lead to big smiles down the road.
+          "Web3 technology is the future of the internet, where data is owned by
+          users not by corporations"
         </div>
       </div>
 
@@ -58,39 +58,40 @@ export default function AboutUs() {
           <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
             Why WEB3
           </h2>
-          <p className={`w-full text-sm`}>
-            Dental Clinic Dapp is built on the Ethereum blockchain. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Maiores minus et velit
-            assumenda, unde quidem recusandae dolore tempora mollitia vel
-            impedit, fugit quo? Neque nam saepe ipsam, quibusdam expedita rerum.
-            <br></br> We've listened and taken a patient-centred approach in
-            every aspect of your visit to calm the senses and make your
-            experience more pleasant. We dedicate ourselves to providing
-            comprehensive dental services in our state-of-the-art dental suites
-            using the most advanced technology. Everything is designed with your
-            comfort and care in mind. Our dentists are extensively educated and
-            knowledgeable. All our specialists are registered by the Dental
-            Council of Ireland. Our staff is devoted to continuous learning to
-            stay updated with new practices and techniques. With over 50,000
-            patients cared for to-date, our patients trust us to care for them
-            and their families. We've earned that trust through our steadfast
-            commitment to our core values of integrity and care. Integrity is
-            the cornerstone of our values, and we always act with honesty and
-            transparency with the intent to do what's right.
+          <p>
+            WEB3 is the World Wide Web of the crypto-sphere, and a web3
+            application is build using Blockchain Technology. You can connect to
+            a web3 app with a crypto wallet. It provides users with more control
+            over their data and content. It can create the operational
+            efficiency, patient experience, data security, and transparency of
+            dental practices. The data that is submitted is safe, also the
+            patient is not required to submit any personal information. All you
+            need is a WEB3 Wallet. Web3 apps have a few benefits over
+            traditional apps.
           </p>
+          <br />
           <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
             What are the benefits?
           </h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla saepe
-            eos autem nobis ducimus aut, excepturi quidem et ullam nostrum quos
-            neque? Dolore facilis unde dicta animi recusandae quaerat ex.
+            Web3 apps allows you to control your personal data. When using a
+            web3 app, all it needs is a connection to a crypto-wallet, so that
+            the personal data isn't collected or stored by the web3 app because
+            it never has access to it. Web3 apps are deployed on decentralized
+            blockchains. A traditional app, for instance, operates on a single,
+            central server. If that server goes down, then you won't be able to
+            access that app. The application can improve the patient experience,
+            optimize operations and to provide innovations to this healthcare
+            domain. Blockchain technology protects patients’ data minimizing the
+            risk of breaches / losses. Patient can be confident that their
+            information is handled with transparency. Blockchain facilitates
+            secure and efficient data sharing between different healthcare
+            providers, labs, and insurance companies, improving coordination and
+            continuity of care. Innovative Payment Systems - Cryptocurrency
+            Payments, and Loyalty Programs - Dental Clinics reward their
+            patients for maintaining regular check-ups.
           </p>
         </div>
-      </div>
-
-      <div className="bg-white py-10 px-4 text-center">
-        <TwoButtons />
       </div>
 
       <div className="bg-white py-10 px-4 text-center">
