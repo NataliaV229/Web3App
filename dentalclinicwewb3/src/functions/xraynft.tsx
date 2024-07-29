@@ -6,11 +6,15 @@
 */
 
 import { Dispatch, SetStateAction } from "react";
+import Web3 from "web3";
+import ABI from "../abis/xray.json";
 
 export const handlePinataSubmission = async (
   pinataFile: any,
   setNftUrl: Dispatch<SetStateAction<any>>
 ) => {
+  const nftAddress = "0xdD2221E39625052e9b924Fdfe5342eF8354E972b";
+
   try {
     const formData = new FormData();
     formData.append("file", pinataFile);
@@ -39,6 +43,25 @@ export const handlePinataSubmission = async (
     setNftUrl(resData.IpfsHash);
     {
       /*Start mint function call here*/
+    }
+
+    //mint nft
+    window.web3 = new Web3(window.ethereum);
+    window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
+    const contractInWindow = window.contract;
+    console.log("contract: " + contractInWindow);
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    const userAccount = accounts[0];
+
+    if (contractInWindow) {
+      //instance.methods.test("hello_a","hello_b","hello_c").send({from:account});
+      console.log("user account: " + userAccount);
+
+      await contractInWindow.methods
+        .safeMint(userAccount, resData.IpfsHash)
+        .send({ from: userAccount });
     }
   } catch (error) {
     console.log(error);

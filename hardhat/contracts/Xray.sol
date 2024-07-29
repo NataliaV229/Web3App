@@ -8,20 +8,30 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Xrays is ERC721, ERC721URIStorage, Ownable {
     uint256 private _nextTokenId;
+    mapping(uint256 => string) private tokenIdToCid;
 
     constructor(address initialOwner)
         ERC721("Xrays", "XRY")
         Ownable(initialOwner)
     {}
 
+//base uri doesn#t really work because of unique images with unqiue cids
+//we dont know the cid ahead of time 
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://";
+        return "";
     }
 
-    function safeMint(address to, string memory uri) public {
-        uint256 tokenId = _nextTokenId++;
+//pass in the cid from ipfs/pinata 
+    function safeMint(address to, string memory cid) public {
+        uint256 tokenId = _nextTokenId;
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+        tokenIdToCid[tokenId] = cid;
+        _nextTokenId++;
+    }
+
+//this function would return the ipfs hash associated with the tokenid.
+    function getCid(uint256 tokenId) public returns (string memory) {
+        return tokenIdToCid[tokenId];
     }
 
     // The following functions are overrides required by Solidity.
