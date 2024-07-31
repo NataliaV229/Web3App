@@ -47,7 +47,7 @@ export const handlePinataSubmission = async (
 
     //mint nft
     window.web3 = new Web3(window.ethereum);
-    window.contract = await new window.web3.eth.Contract(ABI, nftAddress);
+    window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
     const contractInWindow = window.contract;
     console.log("contract: " + contractInWindow);
     const accounts = await window.ethereum.request({
