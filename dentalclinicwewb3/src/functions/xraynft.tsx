@@ -13,7 +13,7 @@ export const handlePinataSubmission = async (
   pinataFile: any,
   setNftUrl: Dispatch<SetStateAction<any>>
 ) => {
-  const nftAddress = "0xdD2221E39625052e9b924Fdfe5342eF8354E972b";
+  const nftAddress = "0x5D1aaFE2CDBF35832B8051995ffa64151aAc9952";
 
   try {
     const formData = new FormData();
@@ -49,7 +49,7 @@ export const handlePinataSubmission = async (
     window.web3 = new Web3(window.ethereum);
     window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
     const contractInWindow = window.contract;
-    console.log("contract: " + contractInWindow);
+    console.log("contract for mining: " + contractInWindow);
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -57,14 +57,14 @@ export const handlePinataSubmission = async (
 
     if (contractInWindow) {
       //instance.methods.test("hello_a","hello_b","hello_c").send({from:account});
-      console.log("user account: " + userAccount);
+      console.log("user account for minting: " + userAccount);
 
       await contractInWindow.methods
         .safeMint(userAccount, resData.IpfsHash)
         .send({ from: userAccount });
     }
   } catch (error) {
-    console.log(error);
+    console.log("nft minting error: " + error);
   }
 };
 
