@@ -151,6 +151,14 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
   return (
     <div className="w-full">
       <div className="w-full flex justify-end">
+        <a
+          href={"https://gold-defeated-ferret-37.mypinata.cloud/ipfs/" + nftUrl}
+          target="_blank"
+          className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
+        >
+          View Minted Xray
+        </a>
+
         {confirmed ? (
           !paid && (
             <button
