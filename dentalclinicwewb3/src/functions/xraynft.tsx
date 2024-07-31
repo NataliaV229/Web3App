@@ -47,7 +47,7 @@ export const handlePinataSubmission = async (
 
     //mint nft
     window.web3 = new Web3(window.ethereum);
-    window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
+    window.contract = await new window.web3.eth.Contract(ABI, nftAddress);
     const contractInWindow = window.contract;
     console.log("contract: " + contractInWindow);
     const accounts = await window.ethereum.request({
@@ -77,6 +77,30 @@ export const mintNFT = async () => {
   try {
     // Request account access if needed
     await window.ethereum.request({ method: "eth_requestAccounts" });
+
+    // We create a provider to interact with Ethereum
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    // We create a signer to sign transactions
+    //const signer = provider.getSigner();
+
+    /**  Replace with your contract address and ABI
+      //const contractAddress = "YOUR_NFT_CONTRACT_ADDRESS";
+      //const contractABI = [
+      // Replace this array with your contract ABI
+      //];
+
+      // Create a new contract instance
+      // const nftContract = new ethers.Contract(
+      // contractAddress,
+      //contractABI,
+      //signer
+      //);
+
+      // Call the mint function (replace 'mint' with your contract's minting function)
+      //const tx = await nftContract.mint();
+      //await tx.wait();
+      */
 
     alert("NFT minted successfully!");
   } catch (error) {
