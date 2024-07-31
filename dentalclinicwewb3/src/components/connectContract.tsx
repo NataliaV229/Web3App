@@ -1,6 +1,7 @@
 // components/ConnectMetamask.tsx
 import { Dispatch, SetStateAction, useState } from "react";
 import Web3 from "web3";
+import ABI from "../abis/xray.json";
 import { handlePinataSubmission } from "../functions/xraynft";
 
 interface ServiceProps {
@@ -33,6 +34,7 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
   const [account, setAccount] = useState<string | null>(null);
   const [paid, setPaid] = useState<boolean>(false);
   const [paymentLoading, setPaymentLoading] = useState<boolean>(false);
+  const [nftCid, setNftCid] = useState<string>("");
 
   console.log({ name: name, email: email, date: date, nftUrl: nftUrl });
 
@@ -53,6 +55,30 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
       }
     } else {
       console.error("Ethereum object doesn't exist!");
+    }
+  };
+
+  const getCidFromContract = async () => {
+    window.web3 = new Web3(window.ethereum);
+    const nftAddress = "0x5D1aaFE2CDBF35832B8051995ffa64151aAc9952";
+    window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
+    const contractInWindow = window.contract;
+    console.log("contract: " + contractInWindow);
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    const userAccount = accounts[0];
+
+    if (contractInWindow) {
+      //instance.methods.test("hello_a","hello_b","hello_c").send({from:account});
+      console.log("user account: " + userAccount);
+
+      const cidFromChain = await contractInWindow.methods
+        .getCid()
+        .call({ from: userAccount });
+      console.log("got cid from chain: " + cidFromChain);
+
+      setNftCid(cidFromChain);
     }
   };
 
@@ -135,6 +161,8 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
           });
         setPaid(true);
         setPaymentLoading(true);
+        getCidFromContract();
+
         setShowLoyalty(true);
         // alert("Thank you!");
       } catch (error) {
@@ -152,7 +180,7 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
     <div className="w-full">
       <div className="w-full flex justify-end">
         <a
-          href={"https://gold-defeated-ferret-37.mypinata.cloud/ipfs/" + nftUrl}
+          href={"https://gold-defeated-ferret-37.mypinata.cloud/ipfs/" + nftCid}
           target="_blank"
           className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
         >

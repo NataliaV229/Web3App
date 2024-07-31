@@ -13,7 +13,7 @@ export const handlePinataSubmission = async (
   pinataFile: any,
   setNftUrl: Dispatch<SetStateAction<any>>
 ) => {
-  const nftAddress = "0xdD2221E39625052e9b924Fdfe5342eF8354E972b";
+  const nftAddress = "0x5D1aaFE2CDBF35832B8051995ffa64151aAc9952";
 
   try {
     const formData = new FormData();

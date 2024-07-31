@@ -8,7 +8,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Xrays is ERC721, ERC721URIStorage, Ownable {
     uint256 private _nextTokenId;
+    //maps the token id of minted nfts to the corresponding cid from ipfs/pinata
     mapping(uint256 => string) private tokenIdToCid;
+    //maps the token id to the minters address. 
+    mapping(address => uint256) private ownerToTokenId;
 
     constructor(address initialOwner)
         ERC721("Xrays", "XRY")
@@ -25,12 +28,17 @@ contract Xrays is ERC721, ERC721URIStorage, Ownable {
     function safeMint(address to, string memory cid) public {
         uint256 tokenId = _nextTokenId;
         _safeMint(to, tokenId);
+        ownerToTokenId[to] = tokenId;
         tokenIdToCid[tokenId] = cid;
         _nextTokenId++;
     }
 
 //this function would return the ipfs hash associated with the tokenid.
-    function getCid(uint256 tokenId) public returns (string memory) {
+    function getCid() public view returns (string memory) {
+        address sender = msg.sender;
+        //find out the id the sender owns..
+        uint256 tokenId = ownerToTokenId[sender];
+        //get the cid for the tokenId above
         return tokenIdToCid[tokenId];
     }
 

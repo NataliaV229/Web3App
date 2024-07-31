@@ -12,7 +12,7 @@ export default function Service1() {
   const [confirmed, setConfirmed] = useState(false);
   const [showLoyalty, setShowLoyalty] = useState(false);
   const etherscanUrl = "https://etherscan.io/address/YOUR_NFT_CONTRACT_ADDRESS";
-  const [nftUrl, setNftUrl] = useState(etherscanUrl);
+  const [nftUrl, setNftUrl] = useState("");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
