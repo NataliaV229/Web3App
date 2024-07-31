@@ -63,7 +63,7 @@ const ConnectContractBtn: React.FC<ServiceProps> = ({
     const nftAddress = "0x5D1aaFE2CDBF35832B8051995ffa64151aAc9952";
     window.contract = await new window.web3.eth.Contract(ABI.abi, nftAddress);
     const contractInWindow = window.contract;
-    console.log("contract: " + contractInWindow);
+    console.log("getcid nft contract: " + contractInWindow.address);
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
