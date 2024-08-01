@@ -45,7 +45,7 @@ const BookingForm: React.FC<ServiceProps> = ({
   return (
     <div className="text-black w-full mb-4">
       <p className="text-center mb-4 text-lg">
-        Complite the form to book the procedure!
+        Fill out the form to book the procedure!
       </p>
       <input
         className="w-full mb-2 p-2 bg-slate-200 rounded-md outline-none"
@@ -76,8 +76,8 @@ const BookingForm: React.FC<ServiceProps> = ({
         onChange={handleInputDateChange}
       />
       <p className="font-bold my-4">
-        If you have any previous X-rays that you want to show to our surgeon,
-        please upload here.
+        Any important documentation that has to be shared with our Specialists,
+        upload here!
       </p>
       <div className="w-full">
         <img src={file} className="mb-4 w-full h-auto rounded-md" />

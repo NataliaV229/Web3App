@@ -78,18 +78,32 @@ export default function AboutUs() {
             web3 app, all it needs is a connection to a crypto-wallet, so that
             the personal data isn't collected or stored by the web3 app because
             it never has access to it. Web3 apps are deployed on decentralized
-            blockchains. A traditional app, for instance, operates on a single,
-            central server. If that server goes down, then you won't be able to
-            access that app. The application can improve the patient experience,
-            optimize operations and to provide innovations to this healthcare
+            blockchains. A traditional app, operates on a single, central
+            server. If that server goes down, then you won't be able to access
+            that app. The application can improve the patient experience,
+            optimize operations and to provide innovations to- healthcare
             domain. Blockchain technology protects patients’ data minimizing the
             risk of breaches / losses. Patient can be confident that their
             information is handled with transparency. Blockchain facilitates
             secure and efficient data sharing between different healthcare
             providers, labs, and insurance companies, improving coordination and
-            continuity of care. Innovative Payment Systems - Cryptocurrency
-            Payments, and Loyalty Programs - Dental Clinics reward their
-            patients for maintaining regular check-ups.
+            continuity of care.
+          </p>
+          <br />
+          <h2 className={`mb-3 text-2xl font-semibold text-yellow-600`}>
+            How it works?
+          </h2>
+          <p>
+            The Dental Clinc Dapp application is designed to revolutionize the
+            way the dental services are accessed, managed and delivered.By
+            integrating with smart contracts the application enables patients to
+            handle and improve patient record management, facilitate efficient
+            appointments scheduling and ensure transparent billing processes.
+            With Smart contracts we convert patients X-rays into non – fungible
+            tokens. They are secured by Ethereum blockchain and have only one
+            official owner - giving Patients control over their medical xrays!
+            Dental Clinic Dapp has an innovative payment system that reward
+            their patients for maintaining regular check-ups.
           </p>
         </div>
       </div>
