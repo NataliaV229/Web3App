@@ -4,7 +4,8 @@ import Footerpage from "@/components/footer";
 import Navigation from "@/components/navigation";
 import { Inter } from "next/font/google";
 import { CSSProperties, useState } from "react";
-
+import Web3 from "web3";
+import loyaltyAbi from "../../abis/loyalty.json";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Service1() {
@@ -19,6 +20,30 @@ export default function Service1() {
   const [date, setDate] = useState("");
   const [file, setFile]: any = useState();
   const [pinataFile, setPinataFile]: any = useState();
+
+  async function transferLoyaltyTokens() {
+    window.web3 = new Web3(window.ethereum);
+    const loyaltyTokenAddress = "0x7671e08cE381392c1613e0A7E438b194cd9fCff1";
+    window.contract = await new window.web3.eth.Contract(
+      loyaltyAbi,
+      loyaltyTokenAddress
+    );
+    const contractInWindow = window.contract;
+    console.log("get loyalty token contract: " + contractInWindow.address);
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    const userAccount = accounts[0];
+
+    if (contractInWindow) {
+      //instance.methods.test("hello_a","hello_b","hello_c").send({from:account});
+      console.log("user account: " + userAccount);
+      //200000000000000 is 0.0002 in wei
+      await contractInWindow.methods
+        .reward(200000000000000)
+        .send({ from: userAccount });
+    }
+  }
 
   const backgroundImageStyle: CSSProperties = {
     backgroundImage:
@@ -134,9 +159,7 @@ export default function Service1() {
               <h2 className="font-bold text-2xl">
                 Thank You for the booking with us!
               </h2>
-              <p className="text-lg">
-                Get 0.0002 ETH with our Loyalty Program!
-              </p>
+              <p className="text-lg">Get 0.0002 Loyal Tokens!</p>
               <div className="w-full flex justify-center gap-4 mt-4">
                 <button
                   type="button"
@@ -149,7 +172,7 @@ export default function Service1() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => console.log("Claimed")}
+                  onClick={() => transferLoyaltyTokens()}
                   className="bg-yellow-300 px-4 py-2 rounded-full shadow-md hover:opacity-80"
                 >
                   Claim Now
